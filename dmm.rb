@@ -1,11 +1,10 @@
 require "webdrivers"
 require "uri"
 
-LOGINID = "miyasaka_more@yahoo.co.jp"
-PASSWORD = "tXtGk6NkiErkURfC"
+LOGINID = ""
+PASSWORD = ""
+
 ALLOWTIMES = ["22:00", "22:30", "23:00", "23:30", "24:00", "24:30"]
-
-
 
 host = "https://eikaiwa.dmm.com/"
 path = "list/?"
