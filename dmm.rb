@@ -1,8 +1,8 @@
 require "webdrivers"
 require "uri"
 
-LOGINID = ""
-PASSWORD = ""
+LOGINID = "#{ARGV[0]}"
+PASSWORD = "#{ARGV[1]}"
 
 ALLOWTIMES = ["22:00", "22:30", "23:00", "23:30", "24:00", "24:30"]
 
