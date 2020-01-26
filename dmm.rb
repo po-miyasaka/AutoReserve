@@ -16,6 +16,7 @@ sort_key = "&sort="
 native_key = "[native]="
 favorite_key = "[favorite]="
 
+ENV["TZ"] = "Asia/Tokyo"
 t = Time.new
 date =  "#{t.year}-#{t.month}-#{t.day}"
 sort = 6
