@@ -31,22 +31,22 @@ driver.find_element(:id, "password").send_keys("#{PASSWORD}")
 driver.find_element(:class, "btn-login").click() # classでの指定
 
 message = catch(:success) do
-    [true, false].each { |isFavorite|
+    [true, false].each do |isFavorite|
         puts isFavorite
-        ALLOWTIMES.each { |time|
+        ALLOWTIMES.each do |time|
             puts time
             tmp = "#{host}#{path}#{type}#{start_time_key}#{time}#{type}#{end_time_key}#{time}#{type}#{native_key}#{native}#{type}#{favorite_key}#{favorite}#{date_key}#{date}#{sort_key}#{sort}"
             puts tmp
             url = URI.encode("#{tmp}")
             driver.navigate().to url
             buttons = driver.find_elements(:class, "bt-open").select{ |element| element.displayed? }
-            
-            buttons.each { |button| 
+
+            buttons.each do |button|
                 button.click()
                 sleep(3)
                 driver.find_element(:id, "submitBox").click()
                 throw :success, "OK"
-            }
-        }
-    }
+            end
+        end
+    end
 end
