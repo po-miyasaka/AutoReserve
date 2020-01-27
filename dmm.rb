@@ -58,7 +58,12 @@ message = catch(:success) do
             ].join
 
             puts url_string
+
+            # Note:
+            # This API was obsolete.
+            # https://docs.ruby-lang.org/ja/latest/method/URI/s/encode.html
             url = URI.encode(url_string)
+
             driver.navigate().to url
             buttons = driver.find_elements(:class, "bt-open").select(&:displayed?)
 
