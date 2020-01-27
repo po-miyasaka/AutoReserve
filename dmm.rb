@@ -6,11 +6,12 @@ PASSWORD = "#{ARGV[1]}"
 
 ALLOWTIMES = ["22:00", "22:30", "23:00", "23:30", "24:00", "24:30"]
 
-type = "&data[tab1]"
+TAB_1 = "&data[tab1]"
 
 ENV["TZ"] = "Asia/Tokyo"
-t = Time.new
-date =  "#{t.year}-#{t.month}-#{t.day}"
+
+now = Time.new
+date =  "#{now.year}-#{now.month}-#{now.day}"
 sort = 6
 native = 1
 favorite = "on"
@@ -25,22 +26,23 @@ driver.find_element(:class, "btn-login").click() # classでの指定
 message = catch(:success) do
     [true, false].each do |isFavorite|
         puts isFavorite
+
         ALLOWTIMES.each do |time|
             puts time
 
             url_string = [
                 "https://eikaiwa.dmm.com/",
                 "list/?",
-                type,
+                TAB_1,
                 "[start_time]=",
                 time,
-                type,
+                TAB_1,
                 "[end_time]=",
                 time,
-                type,
+                TAB_1,
                 "[native]=",
                 native,
-                type,
+                TAB_1,
                 "[favorite]=",
                 favorite,
                 "&date=",
