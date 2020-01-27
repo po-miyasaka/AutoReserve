@@ -1,8 +1,8 @@
 require "webdrivers"
 require "uri"
 
-LOGINID = "#{ARGV[0]}"
-PASSWORD = "#{ARGV[1]}"
+LOGINID =  ARGV[0] || ENV["DMMLOGINID"]
+PASSWORD = ARGV[1] || ENV["DMMPASSWORD"]
 
 ALLOWTIMES = [
     "22:00",
