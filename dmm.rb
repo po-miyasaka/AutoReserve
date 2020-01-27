@@ -35,9 +35,30 @@ message = catch(:success) do
         puts isFavorite
         ALLOWTIMES.each do |time|
             puts time
-            tmp = "#{host}#{path}#{type}#{start_time_key}#{time}#{type}#{end_time_key}#{time}#{type}#{native_key}#{native}#{type}#{favorite_key}#{favorite}#{date_key}#{date}#{sort_key}#{sort}"
-            puts tmp
-            url = URI.encode("#{tmp}")
+
+            url_string = [
+                host,
+                path,
+                type,
+                start_time_key,
+                time,
+                type,
+                end_time_key,
+                time,
+                type,
+                native_key,
+                native,
+                type,
+                favorite_key,
+                favorite,
+                date_key,
+                date,
+                sort_key,
+                sort,
+            ].join
+
+            puts url_string
+            url = URI.encode(url_string)
             driver.navigate().to url
             buttons = driver.find_elements(:class, "bt-open").select(&:displayed?)
 
