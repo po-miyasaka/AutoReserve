@@ -39,7 +39,7 @@ message = catch(:success) do
             puts tmp
             url = URI.encode("#{tmp}")
             driver.navigate().to url
-            buttons = driver.find_elements(:class, "bt-open").select{ |element| element.displayed? }
+            buttons = driver.find_elements(:class, "bt-open").select(&:displayed?)
 
             buttons.each do |button|
                 button.click()
