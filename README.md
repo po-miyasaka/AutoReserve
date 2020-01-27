@@ -4,12 +4,13 @@
 # Usage
 
 ## SetUp
-```
 
+```sh
 bundle
 ```
 
 ## Run
-```
-ruby dmm.rb HogeLoginID HogePassword
+
+```sh
+bundle exec ruby dmm.rb HogeLoginID HogePassword
 ```
