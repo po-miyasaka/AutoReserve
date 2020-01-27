@@ -18,8 +18,8 @@ favorite = "on"
 driver = Selenium::WebDriver.for :chrome
 driver.navigate.to "https://accounts.dmm.com/service/login/password"
 
-driver.find_element(:id, "login_id").send_keys("#{LOGINID}")
-driver.find_element(:id, "password").send_keys("#{PASSWORD}")
+driver.find_element(:id, "login_id").send_keys(LOGINID)
+driver.find_element(:id, "password").send_keys(PASSWORD)
 driver.find_element(:class, "btn-login").click() # classでの指定
 
 message = catch(:success) do
