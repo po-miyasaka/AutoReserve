@@ -6,15 +6,7 @@ PASSWORD = "#{ARGV[1]}"
 
 ALLOWTIMES = ["22:00", "22:30", "23:00", "23:30", "24:00", "24:30"]
 
-host = "https://eikaiwa.dmm.com/"
-path = "list/?"
 type = "&data[tab1]"
-start_time_key = "[start_time]="
-end_time_key = "[end_time]="
-date_key = "&date="
-sort_key = "&sort="
-native_key = "[native]="
-favorite_key = "[favorite]="
 
 ENV["TZ"] = "Asia/Tokyo"
 t = Time.new
@@ -37,23 +29,23 @@ message = catch(:success) do
             puts time
 
             url_string = [
-                host,
-                path,
+                "https://eikaiwa.dmm.com/",
+                "list/?",
                 type,
-                start_time_key,
+                "[start_time]=",
                 time,
                 type,
-                end_time_key,
+                "[end_time]=",
                 time,
                 type,
-                native_key,
+                "[native]=",
                 native,
                 type,
-                favorite_key,
+                "[favorite]=",
                 favorite,
-                date_key,
+                "&date=",
                 date,
-                sort_key,
+                "&sort=",
                 sort,
             ].join
 
