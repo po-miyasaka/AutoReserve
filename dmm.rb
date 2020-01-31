@@ -33,8 +33,8 @@ driver.find_element(:id, "password").send_keys(PASSWORD)
 driver.find_element(:class, "btn-login").click # classでの指定
 
 message = catch(:success) do
-  [true, false].each do |isFavorite|
-    puts isFavorite
+  [true, false].each do |is_favorite|
+    puts is_favorite
 
     ALLOWTIMES.each do |time|
       puts time
