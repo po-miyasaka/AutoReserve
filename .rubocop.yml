@@ -1,0 +1,7 @@
+# Allow japanese comments
+Style/AsciiComments:
+  Enabled: false
+
+# Prefer double quoted string literals
+Style/StringLiterals:
+  EnforcedStyle: double_quotes

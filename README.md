@@ -14,3 +14,17 @@ bundle
 ```sh
 bundle exec ruby dmm.rb HogeLoginID HogePassword
 ```
+
+# Development
+
+Run Lint.
+
+```sh
+bundle exec rubocop
+```
+
+or auto correct.
+
+```sh
+bundle exec rubocop --auto-correct
+```
