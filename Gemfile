@@ -5,5 +5,7 @@ gem "selenium-webdriver"
 gem "webdrivers"
 
 group :development do
+  gem "danger"
+  gem "danger-rubocop"
   gem "rubocop", require: false
 end
