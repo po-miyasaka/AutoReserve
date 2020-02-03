@@ -7,6 +7,6 @@ gem "webdrivers"
 group :development do
   gem "danger"
   gem "danger-rubocop"
-  gem "rubocop", require: false
   gem "rspec"
+  gem "rubocop", require: false
 end
