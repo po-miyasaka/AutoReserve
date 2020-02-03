@@ -17,7 +17,7 @@ bundle exec ruby dmm.rb HogeLoginID HogePassword
 
 # Development
 
-Run Lint.
+## Run Lint
 
 ```sh
 bundle exec rubocop
@@ -27,4 +27,10 @@ or auto correct.
 
 ```sh
 bundle exec rubocop --auto-correct
+```
+
+## Run RSpec
+
+```sh
+bundle exec rspec
 ```
