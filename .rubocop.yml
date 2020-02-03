@@ -1,3 +1,10 @@
+# All
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - 'vendor/bundle/**/*'
+    - 'spec/spec_helper.rb'
+
 # Allow japanese comments
 Style/AsciiComments:
   Enabled: false
