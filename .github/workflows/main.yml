@@ -1,0 +1,30 @@
+name: Run danger
+
+on: [pull_request]
+
+jobs:
+  build:
+
+    # Note:
+    # Maybe can use linux image
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Cache bundler
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: bundler-${{ hashFiles('Gemfile.lock') }}
+        restore-keys: |
+          bundler-${{ hashFiles('Gemfile.lock') }}
+
+    - name: Setup
+      run: bundle
+
+    - name: Run danger
+      run: bundle exec danger
+
+    env:
+      DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
