@@ -11,3 +11,8 @@ desc "Run all tests by rspec"
 task :test do
   system "bundle exec rspec"
 end
+
+desc "Print all specs (not run tests)"
+task :test_doc do
+  system "bundle exec rspec --format documentation --dry-run"
+end
