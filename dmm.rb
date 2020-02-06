@@ -26,7 +26,7 @@ message = catch(:success) do
     ALLOWTIMES.each do |time|
       puts time
 
-      url_string = generate_url_string(date, time)
+      url_string = generate_url_string(date, time, is_favorite)
 
       puts url_string
 

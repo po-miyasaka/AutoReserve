@@ -13,10 +13,10 @@ ALLOWTIMES = [
 
 TAB_1 = "&data[tab1]"
 
-def generate_url_string(date, time)
+def generate_url_string(date, time, is_favorite)
   sort = 6
   native = 1
-  favorite = "on"
+  favorite_query = is_favorite ? "#{TAB_1}[favorite]=on" : ""
 
   [
     "https://eikaiwa.dmm.com/",
@@ -30,9 +30,7 @@ def generate_url_string(date, time)
     TAB_1,
     "[native]=",
     native,
-    TAB_1,
-    "[favorite]=",
-    favorite,
+    favorite_query,
     "&date=",
     date,
     "&sort=",
