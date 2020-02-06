@@ -27,7 +27,7 @@ puts campaign_links
 failed = campaign_links.map do |canpaign_link|
   driver.navigate.to(canpaign_link)
   links = driver.find_elements(:xpath, "//a[starts-with(@href,'https://oubo')]")
-  return campaign_link if links.empty?
+  next canpaign_link if links.empty?
 
   link = links[0].attribute("href")
   puts link
@@ -38,5 +38,6 @@ failed = campaign_links.map do |canpaign_link|
 end
 
 failed.compact.each do |link|
+  "Failed Links"
   puts link
 end
