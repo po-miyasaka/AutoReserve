@@ -21,10 +21,31 @@ jobs:
           bundler-${{ hashFiles('Gemfile.lock') }}
 
     - name: Setup
-      run: bundle
+      run: |
+        bundle
 
+    # Note:
+    # Run only PR in own repository.
+    # Because can't push to forked repository.
+    - name: Run rubocop --auto-correct and push
+      if: contains(github.event.pull_request.head.repo.clone_url, github.repository)
+      run: |
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
+        git config --global user.name 'Yusuke Hosonuma'
+        git config --global user.email '2990285+YusukeHosonuma@users.noreply.github.com'
+        git checkout -b ${{ github.head_ref }} origin/${{ github.head_ref }}
+        bundle exec rubocop --auto-correct && true
+        git add -u
+        git diff-index --quiet HEAD -- || git commit -m '[ci skip] $ rubocop --auto-correct'
+        git push
+
+    # Note:
+    # Run only PR in own repository.
+    # Because can't comment to PR from danger. (Maybe you can... ?)
     - name: Run danger
-      run: bundle exec danger
+      if: contains(github.event.pull_request.head.repo.clone_url, github.repository)
+      run: |
+        bundle exec danger
 
     env:
       DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
