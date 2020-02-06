@@ -38,6 +38,7 @@ failed = campaign_links.map do |canpaign_link|
 end
 
 failed.compact.each do |link|
-  "Failed Links"
+  puts "Failed Links"
   puts link
+  # TODO: 失敗したURLを送る
 end
