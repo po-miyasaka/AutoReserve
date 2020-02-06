@@ -84,6 +84,7 @@ GEM
       rubyzip (>= 1.2.2)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
+    thor (1.0.1)
     unicode-display_width (1.6.1)
     webdrivers (4.2.0)
       nokogiri (~> 1.6)
@@ -99,6 +100,7 @@ DEPENDENCIES
   rspec
   rubocop
   selenium-webdriver
+  thor
   webdrivers
 
 BUNDLED WITH
