@@ -12,3 +12,7 @@ Style/AsciiComments:
 # Prefer double quoted string literals
 Style/StringLiterals:
   EnforcedStyle: double_quotes
+
+# This product is not library, therefore documentation is not always required
+Style/Documentation:
+  Enabled: false
