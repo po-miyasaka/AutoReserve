@@ -8,11 +8,8 @@ PASSWORD    = "#{ ARGV[1] || ENV["$RPASSWORD"]}"
 LOGINURL    = "#{ ARGV[2] || ENV["$RLOGINURL"]}"
 CAMPAIGNURL = "#{ ARGV[3] || ENV["$RCAMPAIGNURL"]}"
 
-puts LOGINURL
-puts CAMPAIGNURL
-
 driver = Selenium::WebDriver.for :chrome
-driver.navigate.to(LOGINURL)
+driver.navigate.to("https://grp03.id.rakuten.co.jp/rms/nid/login?service_id=i122")
 
 driver.find_element(:id, "loginInner_u").send_keys(LOGINID)
 driver.find_element(:id, "loginInner_p").send_keys(PASSWORD)
