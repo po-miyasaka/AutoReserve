@@ -3,10 +3,10 @@
 require "webdrivers"
 require "uri"
 
-LOGINID = "#{ ARGV[0] || ENV["$RLOGINID"]}"
-PASSWORD    = "#{ ARGV[1] || ENV["$RPASSWORD"]}"
-LOGINURL    = "#{ ARGV[2] || ENV["$RLOGINURL"]}"
-CAMPAIGNURL = "#{ ARGV[3] || ENV["$RCAMPAIGNURL"]}"
+LOGINID = (ARGV[0] || ENV["$RLOGINID"]).to_s
+PASSWORD    = (ARGV[1] || ENV["$RPASSWORD"]).to_s
+LOGINURL    = (ARGV[2] || ENV["$RLOGINURL"]).to_s
+CAMPAIGNURL = (ARGV[3] || ENV["$RCAMPAIGNURL"]).to_s
 
 driver = Selenium::WebDriver.for :chrome
 driver.navigate.to(LOGINURL)
