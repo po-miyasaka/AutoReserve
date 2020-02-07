@@ -14,7 +14,7 @@ driver.navigate.to("https://grp03.id.rakuten.co.jp/rms/nid/login?service_id=i122
 driver.find_element(:id, "loginInner_u").send_keys(LOGINID)
 driver.find_element(:id, "loginInner_p").send_keys(PASSWORD)
 driver.find_element(:class, "loginButton").click
-driver.navigate.to(CAMPAIGNURL)
+driver.navigate.to("https://pointcard.rakuten.co.jp/campaign/")
 statuses = driver.find_elements(:class, "campaign__status--saLnK")
 all_links = driver.find_elements(:class, "campaign__title--1qpNU")
 
@@ -33,7 +33,7 @@ failed = campaign_links.map do |canpaign_link|
   puts link
   driver.navigate.to(link)
   sleep(1)
-  driver.navigate.to(CAMPAIGNURL)
+  driver.navigate.to("https://pointcard.rakuten.co.jp/campaign/")
   return nil
 end
 
