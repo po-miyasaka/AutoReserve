@@ -1,36 +1,30 @@
 # AutoReserve
+
 ブラウザを動かして予約するやつ
 
-# Usage
+## Usage
 
-## SetUp
+### SetUp
 
 ```sh
 bundle
 ```
 
-## Run
+### Run
 
 ```sh
 bundle exec ruby dmm.rb HogeLoginID HogePassword
 ```
 
-# Development
+## Development
 
-## Run Lint
+Run `rake` to run Lint (autocorrect) and Test.
 
-```sh
-bundle exec rubocop
-```
-
-or auto correct.
+You can confirm all tasks via `rake -T` that like following.
 
 ```sh
-bundle exec rubocop --auto-correct
-```
-
-## Run RSpec
-
-```sh
-bundle exec rspec
+$ rake -T
+rake lint  # Lint and auto-correct by Rubocop
+rake test  # Run all tests by rspec
+...
 ```
