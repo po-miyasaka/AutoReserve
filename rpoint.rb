@@ -24,6 +24,8 @@ campaign_links = statuses.zip(all_links)
 
 puts "Canpaign List"
 puts campaign_links
+
+puts "Entry\n"
 failed = campaign_links.map do |canpaign_link|
   driver.navigate.to(canpaign_link)
   links = driver.find_elements(:xpath, "//a[starts-with(@href,'https://oubo')]")
@@ -33,12 +35,13 @@ failed = campaign_links.map do |canpaign_link|
   puts link
   driver.navigate.to(link)
   sleep(1)
-  driver.navigate.to(CAMPAIGNURL)
-  return nil
+  driver.navigate.to("https://pointcard.rakuten.co.jp/campaign/")
+  next nil
 end
 
+puts "Failed Links"
 failed.compact.each do |link|
-  puts "Failed Links"
+  
   puts link
   # TODO: 失敗したURLを送る
 end
