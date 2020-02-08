@@ -28,8 +28,8 @@ class RPointEntryService
     all_links = @driver.find_elements(:class, "campaign__title--1qpNU")
 
     @campaign_links = statuses.zip(all_links)
-                              .filter { $:[0].text == "エントリー受付中" }
-                              .map { $:[1].find_element(:xpath, ".//a").attribute("href") }
+                              .filter { $LOAD_PATH[0].text == "エントリー受付中" }
+                              .map { $LOAD_PATH[1].find_element(:xpath, ".//a").attribute("href") }
     puts @campaign_links
   end
 
