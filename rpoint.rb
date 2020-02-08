@@ -6,24 +6,23 @@ require "uri"
 LOGINID = (ARGV[0] || ENV["$RLOGINID"]).to_s
 PASSWORD = (ARGV[1] || ENV["$RPASSWORD"]).to_s
 
+# RPointにエントリーしてくれるやーつ
 class RPointEntryService
   def initialize
-    @loginURL = "https://grp03.id.rakuten.co.jp/rms/nid/login?service_id=i122"
-    @campaignURL = "https://pointcard.rakuten.co.jp/campaign/"
+    @login_URL = "https://grp03.id.rakuten.co.jp/rms/nid/login?service_id=i122"
+    @campaign_URL = "https://pointcard.rakuten.co.jp/campaign/"
     @driver = Selenium::WebDriver.for :chrome
-    @campaign_links
-    @failedLinks
   end
 
   def login
-    @driver.navigate.to(@loginURL)
+    @driver.navigate.to(@login_URL)
     @driver.find_element(:id, "loginInner_u").send_keys(LOGINID)
     @driver.find_element(:id, "loginInner_p").send_keys(PASSWORD)
     @driver.find_element(:class, "loginButton").click
   end
 
-  def getCampaignList
-    @driver.navigate.to(@campaignURL)
+  def get_campaign_list
+    @driver.navigate.to(@campaign_URL)
     statuses = @driver.find_elements(:class, "campaign__status--saLnK")
     all_links = @driver.find_elements(:class, "campaign__title--1qpNU")
 
@@ -47,18 +46,18 @@ class RPointEntryService
     end
   end
 
-  def handleFailedLinks
+  def handle_failed_links
     @failed.compact.each { |link| puts link }
   end
 
   def processing
     login
     puts "Canpaign List"
-    getCampaignList
+    get_campaign_list
     puts "Entry"
     entry
     puts "Failed Links"
-    handleFailedLinks
+    handle_failed_links
   end
 end
 
