@@ -43,7 +43,6 @@ class RPointEntryService
       puts link
       @driver.navigate.to(link)
       sleep(1)
-      @driver.navigate.to(@campaignURL)
       next nil
     end
   end
