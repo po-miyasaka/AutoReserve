@@ -9,20 +9,20 @@ PASSWORD = (ARGV[1] || ENV["$RPASSWORD"]).to_s
 # RPointにエントリーしてくれるやーつ
 class RPointEntryService
   def initialize
-    @login_URL = "https://grp03.id.rakuten.co.jp/rms/nid/login?service_id=i122"
-    @campaign_URL = "https://pointcard.rakuten.co.jp/campaign/"
+    @login_url = "https://grp03.id.rakuten.co.jp/rms/nid/login?service_id=i122"
+    @campaign_url = "https://pointcard.rakuten.co.jp/campaign/"
     @driver = Selenium::WebDriver.for :chrome
   end
 
   def login
-    @driver.navigate.to(@login_URL)
+    @driver.navigate.to(@login_url)
     @driver.find_element(:id, "loginInner_u").send_keys(LOGINID)
     @driver.find_element(:id, "loginInner_p").send_keys(PASSWORD)
     @driver.find_element(:class, "loginButton").click
   end
 
   def get_campaign_list
-    @driver.navigate.to(@campaign_URL)
+    @driver.navigate.to(@campaign_url)
     statuses = @driver.find_elements(:class, "campaign__status--saLnK")
     all_links = @driver.find_elements(:class, "campaign__title--1qpNU")
 
