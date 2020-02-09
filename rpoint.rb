@@ -3,8 +3,8 @@
 require "webdrivers"
 require "uri"
 
-LOGINID = (ARGV[0] || ENV["$RLOGINID"]).to_s
-PASSWORD = (ARGV[1] || ENV["$RPASSWORD"]).to_s
+LOGINID = (ARGV[0] || ENV["RLOGINID"]).to_s
+PASSWORD = (ARGV[1] || ENV["RPASSWORD"]).to_s
 
 # RPointにエントリーしてくれるやーつ
 class RPointEntryService
