@@ -39,7 +39,7 @@ class DMM
             sleep(3)
             button = driver.find_elements(:id, "submitBox")
             throw :result, "予約済みの可能性あり" if button.empty?
-            button.each(&:click) 
+            button[0].click
             throw :result, "予約Done"
           end
         end
