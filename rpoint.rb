@@ -7,7 +7,7 @@ require "uri"
 LOGINID = (ARGV[0] || ENV["RLOGINID"]).to_s
 PASSWORD = (ARGV[1] || ENV["RPASSWORD"]).to_s
 LOGINURL    = (ARGV[2] || ENV["RLOGINURL"]).to_s
-CAMPAIGNURL = (ARGV[3] || ENV["RCAMPAIGNURL"]).to_s.to_s
+CAMPAIGNURL = (ARGV[3] || ENV["RCAMPAIGNURL"]).to_s
 
 # RPointにエントリーしてくれるやーつ
 class RPointEntryService
