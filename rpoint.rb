@@ -3,14 +3,17 @@
 require "webdrivers"
 require "uri"
 
+# ENVのキーに$はつけない
 LOGINID = (ARGV[0] || ENV["RLOGINID"]).to_s
 PASSWORD = (ARGV[1] || ENV["RPASSWORD"]).to_s
+LOGINURL    = ("#{ ARGV[2] || ENV["RLOGINURL"]}").to_s
+CAMPAIGNURL = ("#{ ARGV[3] || ENV["RCAMPAIGNURL"]}").to_s
 
 # RPointにエントリーしてくれるやーつ
 class RPointEntryService
   def initialize
-    @login_url = "https://grp03.id.rakuten.co.jp/rms/nid/login?service_id=i122"
-    @campaign_url = "https://pointcard.rakuten.co.jp/campaign/"
+    @login_url = LOGINURL
+    @campaign_url = CAMPAIGNURL
     @driver = Selenium::WebDriver.for :chrome
   end
 
