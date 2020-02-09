@@ -7,25 +7,25 @@ require "./dmm_lib.rb"
 class DMM
   def self.run(id, password)
     ENV["TZ"] = "Asia/Tokyo"
-    
+
     now = Time.new
     date = "#{now.year}-#{now.month}-#{now.day}"
-    
+
     driver = Selenium::WebDriver.for :chrome
     driver.navigate.to "https://accounts.dmm.com/service/login/password"
-    
+
     driver.find_element(:id, "login_id").send_keys(id)
     driver.find_element(:id, "password").send_keys(password)
     driver.find_element(:class, "btn-login").click # classでの指定
-    
+
     message = catch(:result) do
       [true, false].each do |is_favorite|
         puts is_favorite
-        
+
         ALLOWTIMES.each do |time|
           puts time
           url_string = generate_url_string(date, time, is_favorite)
-          
+
           puts url_string
           # Note:
           # This API was obsolete.
@@ -33,7 +33,7 @@ class DMM
           url = URI.encode(url_string)
           driver.navigate.to url
           buttons = driver.find_elements(:class, "bt-open").select(&:displayed?)
-          
+
           buttons.each do |button|
             button.click
             sleep(3)
@@ -48,5 +48,3 @@ class DMM
     end
   end
 end
-
-
