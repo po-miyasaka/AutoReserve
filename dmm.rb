@@ -43,7 +43,6 @@ message = catch(:result) do
         sleep(3)
         button = driver.find_elements(:id, "submitBox")
         throw :result, "予約済みの可能性あり" if button.empty?
-        button[0].location_once_scrolled_into_view
         button[0].click
         throw :result, "予約Done"
       end
