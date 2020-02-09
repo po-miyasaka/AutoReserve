@@ -19,7 +19,7 @@ driver.find_element(:id, "login_id").send_keys(LOGINID)
 driver.find_element(:id, "password").send_keys(PASSWORD)
 driver.find_element(:class, "btn-login").click # classでの指定
 
-message = catch(:success) do
+message = catch(:result) do
   [true, false].each do |is_favorite|
     puts is_favorite
 
@@ -41,9 +41,13 @@ message = catch(:success) do
       buttons.each do |button|
         button.click
         sleep(3)
-        driver.find_element(:id, "submitBox").click
-        throw :success, "OK"
+        button = driver.find_elements(:id, "submitBox")
+        throw :result, "予約済みの可能性あり" if button.empty?
+        button.each(&:click)
+        throw :result, "予約Done"
       end
     end
   end
 end
+
+puts message
