@@ -44,7 +44,7 @@ class DMM
           end
         end
       end
-      puts message
     end
+    puts message
   end
 end
