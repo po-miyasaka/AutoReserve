@@ -1,4 +1,4 @@
-name: Run danger
+name: Rubocop
 
 on: [pull_request]
 
